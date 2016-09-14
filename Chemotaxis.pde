@@ -1,17 +1,24 @@
  //declare bacteria variables here  
- Bacteria kappa = new Bacteria(); 
+ Bacteria [] colony; 
  void setup()   
  {     
  	//initialize bacteria variables here 
- 	size(500, 500);  
+ 	size(500, 500);
+ 	colony = new Bacteria[5];
+ 	for(int i= 0; i < colony.length; i++){
+ 		colony[i] = new Bacteria();
+ 	}
  }   
  void draw()   
  {    
  	//move and show the bacteria  
   background(0); 
- kappa.show();
- kappa.jump();
- }  
+for(int i= 0; i < colony.length; i++){
+ 		colony[i].jump();
+ 		colony[i].show();
+ 	}
+ } 
+ 
  class Bacteria    
  {     
  	//lots of java!
@@ -21,8 +28,8 @@
  		theY = 250;
  	}  
  void jump(){
- 	theX+= (int)(Math.random() * 3) - 1;
- 	theY+= (int)(Math.random() * 3) - 1;
+ 	theX+= (int)(Math.random() * 10) - 5;
+ 	theY+= (int)(Math.random() * 10) - 5;
  }
  void show(){
  	fill(255);
