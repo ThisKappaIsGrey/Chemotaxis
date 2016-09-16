@@ -18,7 +18,6 @@
 for(int i= 0; i < colony.length; i++){
  		colony[i].walk();
  		colony[i].show();
-    colony[i].stop();
  	}
  }
  class Bacteria
@@ -30,12 +29,14 @@ for(int i= 0; i < colony.length; i++){
  		theY = 250;
  	}
  void walk(){
-     theX+= (int)(Math.random() * 5) - (Math.abs(mouseX/50));
-     theY+= (int)(Math.random() * 5) - (Math.abs(mouseY/50));
- }
- void stop(){
-   if(theX == mouseX && theY == mouseY){
+    if(theX < mouseX){
+     theX+= (int)(Math.random() * 11);
+   }else{
      theX = mouseX;
+   }
+   if(theY < mouseY){
+     theY+= (int)(Math.random() * 11);
+   }else{
      theY = mouseY;
    }
  }
