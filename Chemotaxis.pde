@@ -5,7 +5,7 @@
  {
  	//initialize bacteria variables here
  	size(500, 500);
-  frameRate(10);
+  frameRate(40);
  	colony = new Bacteria[kappa];
  	for(int i= 0; i < colony.length; i++){
  		colony[i] = new Bacteria();
@@ -29,16 +29,24 @@ for(int i= 0; i < colony.length; i++){
  		theY = 250;
  	}
  void walk(){
+ 	if(theX >= 0 || theY >= 0){
     if(theX < mouseX){
-     theX+= (int)(Math.random() * 11);
+     theX+= (int)(Math.random() * 21) - 10;
    }else{
-     theX = mouseX;
+     theX+= (int)(Math.random() * 21) - 12;
    }
    if(theY < mouseY){
-     theY+= (int)(Math.random() * 11);
+     theY+= (int)(Math.random() * 21) - 10;
    }else{
-     theY = mouseY;
+      theY+= (int)(Math.random() * 21) - 12;
    }
+}else{
+	if(theX < 0){
+		theX = 0;
+	}else if(theY < 0){
+		theY = 0;
+	}
+}
  }
  void show(){
  	fill(255);
