@@ -29,8 +29,13 @@ for(int i= 0; i < colony.length; i++){
  		theY = 250;
  	}  
  void walk(){
+ 	if(theX > 0 && theY > 0){
  	theX+= (int)(Math.random() * 21) - 10;
  	theY+= (int)(Math.random() * 21) - 10;
+ }else{
+ 	theX = 0;
+ 	theY = 0;
+ }
  }
  void show(){
  	fill(255);
