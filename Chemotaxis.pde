@@ -29,13 +29,13 @@ for(int i= 0; i < colony.length; i++){
  		theY = 250;
  	}
  void walk(){
-    if(theX < mouseX){
+   if(theX < mouseX){
      theX+= (int)(Math.random() * 11);
    }else{
      theX = mouseX;
    }
    if(theY < mouseY){
-     theY+= (int)(Math.random() * 11);
+     theY+= (int)(Math.random() * 11) ;
    }else{
      theY = mouseY;
    }
