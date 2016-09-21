@@ -1,25 +1,33 @@
 //declare bacteria variables here
-Bacteria [] colony;
+ArrayList<Bacteria> colony;
 int kappa = 8;
 void setup()
 {
   //initialize bacteria variables here
   size(500, 500);
   frameRate(40);
-  colony = new Bacteria[kappa];
-  for (int i= 0; i < colony.length; i++)
+  colony = new ArrayList<Bacteria>();
+  for (int i= 0; i < kappa; i++)
   {
-    colony[i] = new Bacteria();
+    colony.add(new Bacteria());
   }
 }
 void draw()
 {
   //move and show the bacteria
   background(0);
-  for (int i= 0; i < colony.length; i++) 
+  for (int i= 0; i < colony.size(); i++) 
   {
-    colony[i].walk();
-    colony[i].show();
+    Bacteria gold = colony.get(i);
+    gold.show();
+    gold.walk();
+  }
+}
+void mouseClicked(){
+ kappa++;
+ for (int i= 0; i < kappa; i++)
+  {
+    colony.add(new Bacteria());
   }
 }
 class Bacteria
@@ -36,42 +44,26 @@ class Bacteria
   }
   void walk() 
   {
-    if ((theX >= 0 && theY >= 0) && (theX != mouseX && theY != mouseY)) 
-    {
       if (theX < mouseX)
       {
-        theX+= (int)(Math.random() * 21) - 12;
+        theX+= (int)(Math.random() * 11) - 4;
       } 
       else
       {
-        theX+= (int)(Math.random() * 21) - 8;
+        theX+= (int)(Math.random() * 11) - 6;
       }
       if (theY < mouseY)
       {
-        theY+= (int)(Math.random() * 21) - 12;
+        theY+= (int)(Math.random() * 11) - 4;
       } 
       else
       {
-        theY+= (int)(Math.random() * 21) - 8;
-      }
-    } 
-      else if (theX == mouseX && theY == mouseY)
-      {
-        theX = mouseX;
-        theY = mouseY;
+        theY+= (int)(Math.random() * 11) - 6;
       } 
-      else
-      {
-        if (theX < 0) {
-          theX = 0;
-        } else if (theY < 0) {
-          theY = 0;
-        }
-      }
     }
     void show() {
       fill(theColor);
-      ellipse(theX, theY, 10, 10);
+      ellipse(theX % 500, theY % 500, 10, 10);
     }
   }
 
